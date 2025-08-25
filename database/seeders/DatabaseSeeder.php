@@ -8,6 +8,7 @@ use App\Models\CptCode;
 use Carbon\Carbon;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,10 +21,11 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Synergy Health Partners'
         // ]);
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory()->create([
+            'name'     => 'Jake Pazner',
+            'email'    => 'jake@paznerlaw.com',
+            'password' => Hash::make('password')
+        ]);
 
         $mendelson = Client::create([
             'name' => 'Mendelson Orthopedics',

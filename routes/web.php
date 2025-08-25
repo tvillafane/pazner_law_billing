@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProcessorController;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,20 +16,17 @@ Route::get('/process', function () {
 
 Route::post('/process', [ProcessorController::class, 'processFile']);
 
-Route::get('/test', function () {
-    $file_path     = storage_path('app/test.xlsx');
-    $download_name = 'test.xlsx';
+Route::post('/login', function (Request $request) {
+    $auth_attempt_params = $request->only('email', 'password');
 
-    abort_unless(is_file($file_path), 404);
+    if (Auth::attempt($auth_attempt_params, false)) {
+        return redirect('/');
+    } else {
+        return redirect('/process');
+    }
+});
 
-    if (app()->bound('debugbar')) app('debugbar')->disable();
-
-    return response()->download(
-        $file_path,
-        $download_name,
-        [
-            'Content-Type'           => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-            'X-Content-Type-Options' => 'nosniff',
-        ]
-    );
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/');
 });
