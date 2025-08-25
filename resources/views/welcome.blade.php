@@ -60,7 +60,7 @@
                     </form>
                 </div>
                 <div class='col'>
-                    <img src="{{ asset('jake.jpg') }}" />
+                  
                 </div>
             </div>
         </div>
