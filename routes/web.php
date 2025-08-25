@@ -24,7 +24,7 @@ Route::post('/login', function (Request $request) {
     if (!Auth::attempt($auth_attempt_params, false)) {
         return redirect('/')->with('error', 'Failed to sign in, please try again.');
     } else {
-        return redirect('/process')->with('success', 'Successfully logged in.  Let\'s bill some clients');
+        return redirect('/process')->with('success', 'Successfully logged in.');
     }
 });
 
