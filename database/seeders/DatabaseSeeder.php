@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Synergy Health Partners'
         // ]);
 
-        User::factory()->create([
+        User::create([
             'name'     => 'Jake Pazner',
             'email'    => 'jake@paznerlaw.com',
             'password' => Hash::make('password')

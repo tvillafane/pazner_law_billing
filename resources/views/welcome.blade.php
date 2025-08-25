@@ -17,7 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 
-    {{-- <link rel="icon" href="{{ $site->favicon->storage_path }}" type="image/x-icon"> --}}
+    <link rel="icon" href="{{ asset('favicon.webp') }}" type="image/x-icon">
 </head>
 
 <body>

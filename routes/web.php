@@ -8,13 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('login');
 
-Route::get('/process', function () {
-    return view('process');
-});
+Route::middleware('auth')->group(function() {
+    Route::post('/process', [ProcessorController::class, 'processFile']);
 
-Route::post('/process', [ProcessorController::class, 'processFile']);
+    Route::get('/process', function () {
+        return view('process');
+    });
+});
 
 Route::post('/login', function (Request $request) {
     $auth_attempt_params = $request->only('email', 'password');
