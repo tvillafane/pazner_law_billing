@@ -22,6 +22,22 @@
 
 <body>
     <main>
+        <section class="alertBanner">
+            @session('error')
+                <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                    {{ $value }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endsession
+
+            @session('success')
+                <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                    <strong>Success!</strong><br>
+                    {{ $value }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endsession
+        </section>
         <div class="container mt-4">
             <div class="row">
                 <div class="col-lg-6 col-xl-5 px-5 mb-5">
@@ -33,18 +49,18 @@
                         @csrf
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input  type="email" class="form-control" name="email" required
+                            <input type="email" class="form-control" name="email" required
                                 value="{{ old('email') }}" tabindex="1">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Password</label>
-                           <input type="password" class="form-control" name="email" required tabindex="1">
+                            <input type="password" class="form-control" name="password" required tabindex="1">
                         </div>
                         <button type="submit" class="btn btn-primary btn-lg mobileFullWidth mt-3">Sign In</button>
                     </form>
                 </div>
-                 <div class='col'>
-                    <img src="{{ asset('jake.jpg') }}"/>
+                <div class='col'>
+                    <img src="{{ asset('jake.jpg') }}" />
                 </div>
             </div>
         </div>
